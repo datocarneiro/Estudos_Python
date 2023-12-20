@@ -20,4 +20,4 @@ while True:
         numero = int(input("Digite um número:"))
         print(f"O número informado foi: {numero} ")
     except:
-        print(f"{numero}, isso não é um número")
+        print(" isso não é um número")
