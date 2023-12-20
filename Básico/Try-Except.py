@@ -7,7 +7,7 @@ except -> ocorreu algum erro ao tentar executar
 # numero = int(A)
 # print(numero)
 
-# O erro irá acontecer porque a não é um inteiro
+# O erro irá acontecer porque "a" não é um inteiro
 # Traceback (most recent call last):
 #   File "c:\Users\Dato\Documents\REPOSITÓRIO\Estudos-Python\Básico\Try-Except.py", line 7, in <module>
 #     numero = int(a)
