@@ -22,16 +22,18 @@ usuário.
 
 palavraSecreta = 'carro'
 continuar = "s"
+tentativas = 0
 while continuar=="s":
+    tentativas+=1
     try:
         letra = input('Digite uma letra: ')
         if continuar == "s":
             if letra in palavraSecreta:
                 print(f'a letra digitada .... "{letra.upper()}" ... contém na palavra secreta')
-                continuar = input('deseja continuar? [S]sim: ')
+                continuar = input(f' deseja continuar? [S]sim: ')
             else:
                 print("*")
-                continuar = input('deseja continuar? [S]sim: ')
+                continuar = input(f'total de tentativas = {tentativas}, deseja continuar? [S]sim: ')
     except:
         break
 print('voce encerrou o programa')
