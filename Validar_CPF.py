@@ -23,30 +23,35 @@
 
 #     O primeiro dígito do CPF é 7
 
-def formatar_cpf(cpf_formatado):
-    # Formatar o CPF no padrão xxx.xxx.xxx-xx
-    cpf_digitado = str(cpf_input)
-    # cpf_formatado = f'{cpf_digitado[:9]}-{cpf_digitado[9:]}'
-    cpf_formatado = f'{cpf_digitado[:9]}-{cpf_digitado[9:]}'
-    
-    return cpf_formatado
 
 # Solicitar ao usuário que digite o CPF
-while True:    
+while True:
+    print('='*50)
     try:
-        cpf_input = int(input("Digite o CPF [apenas números]: "))
-        # Formatando o CPF e exibindo o resultado
-        cpf_formatado = formatar_cpf(cpf_input)
-        print(f"CPF informado:... {cpf_formatado}")
+        cpf_input = input("Digite o CPF [apenas números]: ")
+        # Verifica se a entrada contém apenas números
+        if not cpf_input.isdigit():
+            raise ValueError('Digite apenas números.')
+        # cria uma tupla com os numeros digitados
+        informado = tuple(map(str, cpf_input))     
+        # Verifica se o CPF tem 11 dígitos
+        if len(informado) != 11:
+            raise ValueError('informe os 11 dígitos.')
+        print('='*50)  
         break
     except ValueError:
-        print('Digite apenas Números Inteiros:')
+        print('Erro desconhecido')
 
-#nove_digitos = cpf_formatado[:9]
-nove_digitos = str(cpf_input)
+#armazenando o CPF digitado para validar ao final do código
+cpf_informado = ''.join(informado) # o delimitador é chamado antes
+cpf_digitado_armazenado = f'{cpf_informado[:9]}-{cpf_informado[9:]}'
+print(f'CPF informado: {cpf_digitado_armazenado}')
+print('='*50)
 
+# variavel irá armazenar somente os 9 primeiros dígitos para o calculo                 python cpf.py
+nove_digitos = informado[:9]                 #      74682489070
 
-
+# Calculo do primeiro dígito
 resultado = 0
 numero_regressivo1 = 10
 for i in nove_digitos:
@@ -54,7 +59,7 @@ for i in nove_digitos:
     numero_regressivo1 -= 1
 
 primeiro_digito = (resultado * 10) % 11 if (resultado * 10) % 11 <= 9 else 0
-print(f'Validando o primeiro dígito:... {primeiro_digito}')
+# print(f"Validando o primeiro dígito:... ' * '") # {primeiro_digito}')
 
 #############################################################################################################
 
@@ -84,9 +89,10 @@ print(f'Validando o primeiro dígito:... {primeiro_digito}')
 # O segundo dígito do CPF é 0
 
 #concatenando os 9 digitos + o primeiro dígito
-dez_digitos = nove_digitos+str(primeiro_digito)
-print(f'Dez dígitos:... {dez_digitos}')
+dez_digitos = list(nove_digitos)
+dez_digitos.append(str(primeiro_digito))
 
+# Calculo para o segundo dígito
 resultado = 0
 numero_regressivo2 = 11
 for i in dez_digitos:
@@ -94,12 +100,21 @@ for i in dez_digitos:
     numero_regressivo2 -= 1
 
 segundo_digito = (resultado * 10) % 11 if (resultado * 10) % 11 <= 9 else 0
-print(f'Validando o segundo dígito:... {segundo_digito}')
+# print(f"Validando o segundo dígito:... ' * '") # {segundo_digito}')
+print(f"\t\t ... Validando ...") # {segundo_digito}')
+print('='*50)
 
-resultado_cpf = dez_digitos + str(segundo_digito)
-# resultado_cpf_formatado = formatar_cpf(resultado_cpf)
-cpf_formatado = f'{resultado_cpf[:9]}-{resultado_cpf[9:]}'
-print(cpf_formatado)
+#concatenando os 9 digitos + o primeiro dígito
+onze_digitos = list(dez_digitos)
+onze_digitos.append(str(segundo_digito))
 
-if 
+cpf_unido = ''.join(onze_digitos) # o delimitador é chamado antes
+
+cpf_validado = f'{cpf_unido[:9]}-{cpf_unido[9:]}'
+
+if cpf_digitado_armazenado == cpf_validado:
+    print(f'\n\t ... O cpf "{cpf_validado}" é: VÁLIDO ...\n')
+else:
+    print(f'\n\t ... O cpf "{cpf_digitado_armazenado}" é: INVÁLIDO ...\n')
+print('='*50)
 

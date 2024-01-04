@@ -83,7 +83,6 @@ while True:
     #concatenando os 9 digitos + o primeiro dígito
     dez_digitos = list(nove_digitos)
     dez_digitos.append(str(primeiro_digito))
-    dez_digitos_tupla = dez_digitos
 
     resultado = 0
     numero_regressivo2 = 11
@@ -97,10 +96,11 @@ while True:
     resultado_cpf = dez_digitos
 
     resultado_cpf.append(str(segundo_digito))
+ 
 
-    frase_unida = ''.join(resultado_cpf) # o delimitador é chamado antes
+    cpf_unido = ''.join(resultado_cpf) # o delimitador é chamado antes
 
-    cpf_validado = f'{frase_unida[:9]}-{frase_unida[9:]}'
+    cpf_validado = f'{cpf_unido[:9]}-{cpf_unido[9:]}'
     print(f'\n\t{cpf_validado}\n')
 
     continuar = input('Gerar outro? [s]im  [n]ão: ')
