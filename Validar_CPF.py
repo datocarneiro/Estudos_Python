@@ -42,6 +42,17 @@ while True:
     except ValueError:
         print('Erro desconhecido')
 
+# Validando input com biblioteca 
+# import re
+# import sys
+# entrada = input('CPF [746.824.890-70]: ')
+# cpf_enviado_usuario = re.sub(r'[^0-9]','', entrada)
+# entrada_e_sequencial = entrada == entrada[0] * len(entrada)
+# if entrada_e_sequencial:
+#     print('Você enviou dados sequenciais.')
+#     sys.exit()
+
+
 #armazenando o CPF digitado para validar ao final do código
 cpf_informado = ''.join(informado) # o delimitador é chamado antes
 cpf_digitado_armazenado = f'{cpf_informado[:9]}-{cpf_informado[9:]}'
