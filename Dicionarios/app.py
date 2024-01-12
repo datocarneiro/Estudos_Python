@@ -1,3 +1,34 @@
+
+def conferir(indice, *args):
+    resposta = args
+    valor_indice = int(resposta[0][indice])
+    return valor_indice
+
+def perguntar():
+    for i in perguntas:
+        pergunta = i['Pergunta']
+        print(pergunta)
+        opcao = i['Opções']
+        resposta_correta = int(i['Resposta'])  
+        for indice, valor in enumerate(opcao):
+            print(f'{indice+1}) {valor}')
+        while True:
+            try:
+                resposta_usuario = int(input('Escolha uma opção:  '))
+                if 1 <= resposta_usuario <= len(opcao):
+                    break
+                else:
+                    print(f'Opção inválida, escolha um numero de 1 à {len(opcao)}') 
+                    continue   
+            except ValueError:
+                print('Digite umnúmero')
+        valor_indice = conferir(resposta_usuario-1, opcao) 
+        if valor_indice == resposta_correta:
+            print( 'Você Acertou ! ')
+        else:
+            print('Você Errou ! ')
+    return 'Questionario encerrado'
+
 perguntas = [{
         'Pergunta': 'Quanto é 2+2?',
         'Opções': ['1', '3', '4', '5'],
@@ -10,30 +41,6 @@ perguntas = [{
         'Pergunta': 'Quanto é 10/2?',
         'Opções': ['4', '5', '2', '1'],
         'Resposta': '5',
-    },
-]
-def escolher_pergunta(indice):
-    print(indice)
-    dados_pergunta_escolhida = perguntas[indice] # dicionario
-    print(dados_pergunta_escolhida.get('Pergunta'))
-    while True:
-        opcoes = input(f"Escolha uma das alternativas: {dados_pergunta_escolhida.get('Opções')}")
-        resposta = dados_pergunta_escolhida.get('Resposta')
-        if opcoes == resposta:
-            return 'Você ACERTOU ... :)'
-        else:
-            print(f'Sua resposta foi "{opcoes}"... Você ERROU ....:(')
-            continue
+    }]
 
-while True:
-    try:
-        escolher_questao = int(input(f'escolha uma pergunta: 1, 2 ou 3?'))-1
-        if escolher_questao < 0 or escolher_questao > 2:
-            print('Numero inválido')
-            continue
-        else:
-            for i,v  in enumerate(perguntas):
-                    if escolher_questao == i:
-                        print(escolher_pergunta(escolher_questao))
-    except ValueError:
-        print('Digite um número')
+print(perguntar())
