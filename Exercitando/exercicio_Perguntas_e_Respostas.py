@@ -1,4 +1,5 @@
 
+# # Exercício - sistema de perguntas e respostas
 def conferir(indice, *args):
     resposta = args
     valor_indice = int(resposta[0][indice])
@@ -7,9 +8,8 @@ def conferir(indice, *args):
 def perguntar():
     for i in perguntas:
         pergunta = i['Pergunta']
-        print(pergunta)
+        print(f'Pergunta {pergunta}')
         opcao = i['Opções']
-        resposta_correta = int(i['Resposta'])  
         for indice, valor in enumerate(opcao):
             print(f'{indice+1}) {valor}')
         while True:
@@ -23,11 +23,16 @@ def perguntar():
             except ValueError:
                 print('Digite umnúmero')
         valor_indice = conferir(resposta_usuario-1, opcao) 
+        resposta_correta = int(i['Resposta'])  
+        acertos = []
+        erros = []
         if valor_indice == resposta_correta:
-            print( 'Você Acertou ! ')
+            print('✅ Você Acertou  ! \n')
+            acertos.append('1')
         else:
-            print('Você Errou ! ')
-    return 'Questionario encerrado'
+            print('❌ Você Errou ! \n')
+            erros.append('1')
+    return f'\n\tResultado: \n\t✅ Acerto(s): [{len(acertos)+1}]\n\t❌ Erro(s): [{len(erros)+1}] '
 
 perguntas = [{
         'Pergunta': 'Quanto é 2+2?',
