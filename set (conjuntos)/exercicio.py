@@ -27,14 +27,14 @@ lista_de_listas_de_inteiros = [
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],    #-1
 ]
 def verificar(lista):
-    primeiro_duplicados = -1
-    duplicados = set() # ldfgdfhgfd
+    resultado = -1
+    duplicados = set() 
     for ind in i:
         if ind in duplicados:
-            primeiro_duplicados = ind
+            resultado = ind
             break
         duplicados.add(ind)
-    return primeiro_duplicados
+    return resultado
 
 for i in lista_de_listas_de_inteiros:
-    print(verificar(i))
+    print(verificar(i), end=' | ' ) # chamando a função verificar
