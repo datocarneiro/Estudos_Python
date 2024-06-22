@@ -3,18 +3,19 @@
 # O jogador pode controlar o percurso da bolinha mudando a posição de algumas portinhas do labirinto. 
 # Cada portinha pode estar na posição 0, que significa virada para a esquerda, ou na posição 1 que quer dizer virada para a direita. 
 # Considere o flíper da figura abaixo, que tem duas portinhas. 
+#                                  (E)
+#                                 [0][1]
+#                                  /  \
+#           Left = 0              /    \
+#           Rigth = 1           (E)    (E)
+#           Escolha = E       [0][1]  [0][1]
+#                              /  \    /  \
+#                             /    \  /    \
+#                           (A)     (B)    (C) 
 
-# A portinha 𝑃
-# P está na posição 1 
-
-# e a portinha 𝑅
-# R, na posição 0. 
-
-# Desse jeito, a bolinha vai cair pelo caminho B.
-
-A = [1,1]
-B = [1,0]
-C = [0]
+A = [0,0]
+B = [[0,1], [1,0]]
+C = [1,1]
 lista = []
 continuar = ''
 while continuar != 'n':
@@ -25,12 +26,14 @@ while continuar != 'n':
         if lista == A:
             print("Caminho A escolhido")
             break
-        elif lista == B:
+        elif lista == B[0] or lista == B[1] :
             print("Caminho B escolhido")
             break
         elif lista == C:
             print("Caminho C escolhido")
             break
+        else:
+            print('Caminho não existe')
     lista.clear()
     print('*' *30)
     continuar = input('COntinuar? s(sim) | n(não): ')
