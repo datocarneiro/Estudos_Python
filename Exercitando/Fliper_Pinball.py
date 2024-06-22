@@ -22,7 +22,6 @@ while continuar != 'n':
     for i in range(2):
         posicao = int(input("Digite a opção entre [0 e 1]:     "))
         lista.append(posicao)
-
         if lista == A:
             print("Caminho A escolhido")
             break
